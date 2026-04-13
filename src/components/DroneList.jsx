@@ -11,6 +11,7 @@ export default function DroneList() {
         api.getDrones().then(setDrones);
     }, []);
 
+
     return (
         <Card>
             <CardContent className="p-4 space-y-2">
@@ -22,10 +23,25 @@ export default function DroneList() {
                         onClick={() => navigate(`/drone/${d.id}`)}
                         className="p-2 bg-muted rounded cursor-pointer hover:bg-accent"
                     >
-                        {d.name} — {d.status}
+                        {d.name} — {d.status} —
+
+                        <button
+                            onClick={async (e) => {
+                                e.stopPropagation();
+                                await api.deleteDrone(d.id);
+                                setDrones(prev => prev.filter(drone => drone.id !== d.id));
+                            }}
+                        >
+
+                            Delete
+                        </button>
+
                     </div>
+
                 ))}
             </CardContent>
         </Card>
+
     );
 }
+

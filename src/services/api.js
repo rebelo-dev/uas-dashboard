@@ -11,6 +11,21 @@ export const api = {
             body: JSON.stringify(data),
         }),
 
+    getDrone: (id) =>
+        fetch(`${BASE_URL}/drones/${id}`).then(r => r.json()),
+
+    updateDrone: (id, data) =>
+        fetch(`${BASE_URL}/drones/${id}`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+        }),
+
+    deleteDrone: (id) =>
+        fetch(`${BASE_URL}/drones/${id}`, {
+            method: "DELETE",
+        }),
+
     /*sendTelemetry: (id, data) =>
         fetch(`${BASE_URL}/drones/${id}/telemetry`, {
             method: "POST",
