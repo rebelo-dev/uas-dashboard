@@ -119,3 +119,18 @@ function App() {
 }
 
 export default App
+
+/*
+
+TEST TO SEE IF TAILWIND IS WORKING
+
+
+export default function App() {
+  return (
+    <div className="text-red-500 text-3xl">
+      Tailwind is working
+    </div>
+  );
+}
+  
+*/
