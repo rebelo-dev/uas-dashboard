@@ -9,6 +9,10 @@ export default function SimulatorControl({ droneId }) {
         api.startSimulation(droneId);
     };
 
+    const stopSimulation = () => {
+        api.stopSimulation(droneId);
+    };
+
     return (
         <Card>
             <CardContent className="p-4">
@@ -16,6 +20,9 @@ export default function SimulatorControl({ droneId }) {
 
                 <Button onClick={startSimulation}>
                     Start Simulation
+                </Button>
+                <Button onClick={stopSimulation} variant="destructive">
+                    Stop Simulation
                 </Button>
             </CardContent>
         </Card>

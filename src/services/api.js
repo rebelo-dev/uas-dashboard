@@ -51,8 +51,10 @@ export const api = {
     //SIMULATION
 
     startSimulation: (id) =>
-        fetch(`${BASE_URL}/simulate/${id}`, { method: "POST" }).then(r => r.json()),
+        fetch(`${BASE_URL}/simulate/${id}/start`, { method: "POST" }).then(r => r.json()),
 
+    stopSimulation: (id) =>
+        fetch(`${BASE_URL}/simulate/${id}/stop`, { method: "POST" }).then(r => r.json()),
 
 
 };
