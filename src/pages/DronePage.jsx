@@ -8,7 +8,13 @@ export default function DronePage() {
     const { id } = useParams();
     const [drone, setDrone] = useState(null);
     const [alerts, setAlerts] = useState([]);
-    const fetchAlerts = () => api.getAlerts(id).then(setAlerts);
+
+    const refreshData = () => {
+        api.getDrone(id).then(setDrone);
+        api.getAlerts(id).then(setAlerts);
+    };
+
+
 
 
     const statusDrone = async () => {
@@ -21,22 +27,22 @@ export default function DronePage() {
 
     useEffect(() => {
         api.getDrone(id).then(setDrone);
-        fetchAlerts();
+        refreshData();
     }, [id]);
 
     if (!drone) return <div>Loading...</div>;
 
     return (
         <div className="p-6 space-y-6">
-            <h1 className="text-2xl font-bold">Drone {id}</h1>
+            <h1 className="text-2xl font-bold">Drone UUID: "{id}"</h1>
             <p>Status: {drone.status}</p>
 
-            <button onClick={statusDrone}>Update Status</button>
+            <button onClick={statusDrone}>Update Status Manually</button>
 
             {/* <TelemetrySender droneId={id} /> */}
 
 
-            <TelemetrySender droneId={id} onTelemetrySent={fetchAlerts} />
+            <TelemetrySender droneId={id} onTelemetrySent={refreshData} />
 
             {/* <AlertsList droneId={id} /> */}
 
@@ -48,7 +54,3 @@ export default function DronePage() {
 }
 
 
-
-{/* const [alerts, setAlerts] = useState([]);*/ }
-{/*  const fetchAlerts = () => api.getAlerts(id).then(setAlerts);*/ }
-{/* fetchAlerts(); use effect*/ }
