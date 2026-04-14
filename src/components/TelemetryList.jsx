@@ -7,6 +7,7 @@ export default function TelemetryList({ droneId }) {
 
     const fetchTelemetry = () => {
         api.getTelemetry(droneId).then(setTelemetry);
+
     };
 
     useEffect(() => {
@@ -21,7 +22,7 @@ export default function TelemetryList({ droneId }) {
             <CardContent className="p-4 space-y-2">
                 <h2 className="text-lg font-semibold">Telemetry</h2>
 
-                {telemetry.slice(0, 10).map((t) => (
+                {telemetry.slice(0, 8).map((t) => (
                     <div key={t.id} className="p-2 border-b text-sm">
                         <p>Speed: {t.speed}</p>
                         <p>Altitude: {t.altitude}</p>

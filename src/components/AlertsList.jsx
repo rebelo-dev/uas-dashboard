@@ -7,7 +7,7 @@ export default function AlertsList({ alerts, droneName }) {
                     Alerts for Drone: {droneName}
                 </h2>
 
-                {alerts.map((alert) => (
+                {alerts.slice(0, 8).map((alert) => (
                     <div key={alert.id} className="p-2 border-b">
                         <p>{alert.type}</p>
                         <p className="text-sm">{alert.message}</p>
