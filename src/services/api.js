@@ -1,6 +1,9 @@
 const BASE_URL = "http://localhost:3000";
 
 export const api = {
+
+    // DRONES
+
     getDrones: () => fetch(`${BASE_URL}/drones`).then(r => r.json()),
 
 
@@ -9,7 +12,7 @@ export const api = {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),
-        }),
+        }).then(r => r.json()),
 
     getDrone: (id) =>
         fetch(`${BASE_URL}/drones/${id}`).then(r => r.json()),
@@ -24,21 +27,31 @@ export const api = {
     deleteDrone: (id) =>
         fetch(`${BASE_URL}/drones/${id}`, {
             method: "DELETE",
-        }),
+        }).then(r => r.json()),
 
-    /*sendTelemetry: (id, data) =>
+    // TELEMETRY
+
+    // manual post
+
+    sendTelemetry: (id, data) =>
         fetch(`${BASE_URL}/drones/${id}/telemetry`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),
-        }),
+        }).then(r => r.json()),
+
+    getTelemetry: (id) =>
+        fetch(`${BASE_URL}/drones/${id}/telemetry`).then(r => r.json()),
+
+    // ALERTS
 
     getAlerts: (id) =>
         fetch(`${BASE_URL}/alerts/drone/${id}`).then(r => r.json()),
-    
-    
-    all this code needs to be tested, not sure about sintax here, will come back after doing drone pages as there are more methods to add.
-    
+
+    /*
+
+startSimulation: (id) =>
+  fetch(`${BASE_URL}/simulate/${id}`, { method: "POST" }),    
     */
 
 

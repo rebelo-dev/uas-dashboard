@@ -1,13 +1,15 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { api } from "../services/api";
-//import TelemetrySender from "../components/TelemetrySender";
-//import AlertsList from "../components/AlertsList";
+import TelemetrySender from "../components/TelemetrySender";
+import AlertsList from "../components/AlertsList";
 
 export default function DronePage() {
     const { id } = useParams();
-
     const [drone, setDrone] = useState(null);
+    const [alerts, setAlerts] = useState([]);
+    const fetchAlerts = () => api.getAlerts(id).then(setAlerts);
+
 
     const statusDrone = async () => {
         const newStatus = prompt("New status? ONLINE, OFFLINE, MAINTENANCE (IN CAPITAL LETTERS)");
@@ -19,6 +21,7 @@ export default function DronePage() {
 
     useEffect(() => {
         api.getDrone(id).then(setDrone);
+        fetchAlerts();
     }, [id]);
 
     if (!drone) return <div>Loading...</div>;
@@ -31,8 +34,21 @@ export default function DronePage() {
             <button onClick={statusDrone}>Update Status</button>
 
             {/* <TelemetrySender droneId={id} /> */}
+
+
+            <TelemetrySender droneId={id} onTelemetrySent={fetchAlerts} />
+
             {/* <AlertsList droneId={id} /> */}
+
+
+            <AlertsList alerts={alerts} droneName={drone?.name} />
 
         </div>
     );
 }
+
+
+
+{/* const [alerts, setAlerts] = useState([]);*/ }
+{/*  const fetchAlerts = () => api.getAlerts(id).then(setAlerts);*/ }
+{/* fetchAlerts(); use effect*/ }
