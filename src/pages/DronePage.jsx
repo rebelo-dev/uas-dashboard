@@ -4,6 +4,7 @@ import { api } from "../services/api";
 import TelemetrySender from "../components/TelemetrySender";
 import AlertsList from "../components/AlertsList";
 import SimulatorControl from "../components/SimulatorControl";
+import TelemetryList from "../components/TelemetryList";
 
 
 export default function DronePage() {
@@ -51,6 +52,7 @@ export default function DronePage() {
 
 
             <SimulatorControl droneId={id} />
+            <TelemetryList droneId={id} />
             <AlertsList alerts={alerts} droneName={drone?.name} />
 
 
