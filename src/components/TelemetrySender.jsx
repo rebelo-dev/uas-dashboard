@@ -4,7 +4,7 @@ import { Input } from "./ui/input";
 import { Card, CardContent } from "./ui/card";
 import { api } from "../services/api";
 
-export default function TelemetrySender({ droneId, onTelemetrySent }) {
+export default function TelemetrySender({ droneId }) {
     const [speed, setSpeed] = useState("");
     const [altitude, setAltitude] = useState("");
 
@@ -15,8 +15,6 @@ export default function TelemetrySender({ droneId, onTelemetrySent }) {
             lat: 0,
             lng: 0,
         });
-        onTelemetrySent();
-
     };
 
     return (

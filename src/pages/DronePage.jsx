@@ -10,15 +10,14 @@ import TelemetryList from "../components/TelemetryList";
 export default function DronePage() {
     const { id } = useParams();
     const [drone, setDrone] = useState(null);
-    const [alerts, setAlerts] = useState([]);
 
-    const refreshData = () => {
+
+
+    useEffect(() => {
         api.getDrone(id).then(setDrone);
-        api.getAlerts(id).then(setAlerts);
-    };
 
 
-
+    }, [id]);
 
     const statusDrone = async () => {
         const newStatus = prompt("New status? ONLINE, OFFLINE, MAINTENANCE (IN CAPITAL LETTERS)");
@@ -28,10 +27,6 @@ export default function DronePage() {
         setDrone(updated);
     };
 
-    useEffect(() => {
-        api.getDrone(id).then(setDrone);
-        refreshData();
-    }, [id]);
 
     if (!drone) return <div>Loading...</div>;
 
@@ -45,7 +40,7 @@ export default function DronePage() {
             {/* <TelemetrySender droneId={id} /> */}
 
 
-            <TelemetrySender droneId={id} onTelemetrySent={refreshData} />
+            <TelemetrySender droneId={id} />
 
             {/* <AlertsList droneId={id} /> */}
 
@@ -53,7 +48,7 @@ export default function DronePage() {
 
             <SimulatorControl droneId={id} />
             <TelemetryList droneId={id} />
-            <AlertsList alerts={alerts} droneName={drone?.name} />
+            <AlertsList droneId={id} />
 
 
 

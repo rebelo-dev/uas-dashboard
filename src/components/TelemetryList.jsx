@@ -13,7 +13,7 @@ export default function TelemetryList({ droneId }) {
     useEffect(() => {
         fetchTelemetry();
 
-        const interval = setInterval(fetchTelemetry, 5000); // auto refresh
+        const interval = setInterval(fetchTelemetry, 5000);
         return () => clearInterval(interval);
     }, [droneId]);
 
