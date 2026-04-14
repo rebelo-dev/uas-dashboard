@@ -48,11 +48,11 @@ export const api = {
     getAlerts: (id) =>
         fetch(`${BASE_URL}/alerts/drone/${id}`).then(r => r.json()),
 
-    /*
+    //SIMULATION
 
-startSimulation: (id) =>
-  fetch(`${BASE_URL}/simulate/${id}`, { method: "POST" }),    
-    */
+    startSimulation: (id) =>
+        fetch(`${BASE_URL}/simulate/${id}`, { method: "POST" }).then(r => r.json()),
+
 
 
 };

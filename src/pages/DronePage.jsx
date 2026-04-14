@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { api } from "../services/api";
 import TelemetrySender from "../components/TelemetrySender";
 import AlertsList from "../components/AlertsList";
+import SimulatorControl from "../components/SimulatorControl";
+
 
 export default function DronePage() {
     const { id } = useParams();
@@ -47,7 +49,11 @@ export default function DronePage() {
             {/* <AlertsList droneId={id} /> */}
 
 
+
+            <SimulatorControl droneId={id} />
             <AlertsList alerts={alerts} droneName={drone?.name} />
+
+
 
         </div>
     );
