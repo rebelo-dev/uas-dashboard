@@ -10,7 +10,7 @@ export default function DronePage() {
     const [drone, setDrone] = useState(null);
 
     const statusDrone = async () => {
-        const newStatus = prompt("New status?");
+        const newStatus = prompt("New status? ONLINE, OFFLINE, MAINTENANCE (IN CAPITAL LETTERS)");
         if (!newStatus) return;
 
         const updated = await api.updateDrone(id, { status: newStatus });

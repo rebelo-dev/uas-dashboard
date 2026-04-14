@@ -19,7 +19,7 @@ export const api = {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),
-        }),
+        }).then(r => r.json()),
 
     deleteDrone: (id) =>
         fetch(`${BASE_URL}/drones/${id}`, {
