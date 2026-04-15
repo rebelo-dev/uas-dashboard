@@ -18,12 +18,13 @@ export default function TelemetryList({ droneId }) {
     }, [droneId]);
 
     return (
-        <Card>
-            <CardContent className="p-4 space-y-2">
+        <Card className="shadow-sm border">
+            <CardContent className="p-4 space-y-3">
                 <h2 className="text-lg font-semibold">Telemetry</h2>
 
                 {telemetry.slice(0, 8).map((t) => (
-                    <div key={t.id} className="p-2 border-b text-sm">
+                    <div key={t.id} className="p-2 rounded-md bg-gray-50 border text-sm"
+                    >
                         <p>Speed: {t.speed}</p>
                         <p>Altitude: {t.altitude}</p>
                         <p>

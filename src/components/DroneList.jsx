@@ -13,24 +13,26 @@ export default function DroneList() {
 
 
     return (
-        <Card>
-            <CardContent className="p-4 space-y-2">
+        <Card className="shadow-sm border">
+            <CardContent className="p-4 space-y-3">
                 <h2 className="text-lg font-semibold">Drones</h2>
 
                 {drones.map((d) => (
                     <div
                         key={d.id}
                         onClick={() => navigate(`/drone/${d.id}`)}
-                        className="p-2 bg-muted rounded cursor-pointer hover:bg-accent"
-                    >
-                        {d.name} — {d.status} —
+                        className="p-3 rounded-md border bg-white hover:bg-gray-100 cursor-pointer flex justify-between items-center">
+                        <div>
+                            <p className="font-medium">{d.name}</p>
+                            <p className="text-sm text-gray-500">{d.status}</p>
+                        </div>
 
-                        <button
-                            onClick={async (e) => {
-                                e.stopPropagation();
-                                await api.deleteDrone(d.id);
-                                setDrones(prev => prev.filter(drone => drone.id !== d.id));
-                            }}
+
+                        <button className="text-red-500 text-sm hover:underline" onClick={async (e) => {
+                            e.stopPropagation();
+                            await api.deleteDrone(d.id);
+                            setDrones(prev => prev.filter(drone => drone.id !== d.id));
+                        }}
                         >
 
                             Delete

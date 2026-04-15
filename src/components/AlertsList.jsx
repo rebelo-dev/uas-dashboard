@@ -17,14 +17,14 @@ export default function AlertsList({ droneId }) {
     }, [droneId]);
 
     return (
-        <Card>
-            <CardContent className="p-4 space-y-2">
+        <Card className="shadow-sm border">
+            <CardContent className="p-4 space-y-3">
                 <h2 className="text-lg font-semibold text-red-600">
                     Alerts
                 </h2>
 
                 {alerts.slice(0, 8).map((alert) => (
-                    <div key={alert.id} className="p-2 border-b">
+                    <div key={alert.id} className="p-2 rounded-md bg-red-50 border">
                         <p>{alert.type}</p>
                         <p className="text-sm">{alert.message}</p>
                         <p className="text-xs text-red-500">

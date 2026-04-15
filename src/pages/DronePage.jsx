@@ -5,6 +5,8 @@ import TelemetrySender from "../components/TelemetrySender";
 import AlertsList from "../components/AlertsList";
 import SimulatorControl from "../components/SimulatorControl";
 import TelemetryList from "../components/TelemetryList";
+import { Button } from "../components/ui/button";
+
 
 
 export default function DronePage() {
@@ -30,25 +32,43 @@ export default function DronePage() {
 
     if (!drone) return <div>Loading...</div>;
 
+    //if (!drone) return <p className="text-gray-500">Loading...</p>;
+
     return (
         <div className="p-6 space-y-6">
-            <h1 className="text-2xl font-bold">Drone UUID: "{id}"</h1>
-            <p>Status: {drone.status}</p>
+            <h1 className="text-3xl font-bold">
+                {drone.name}
+            </h1>
 
-            <button onClick={statusDrone}>Update Status Manually</button>
+            <p className="text-sm text-gray-500">
+                ID: {id}
+            </p>
 
-            {/* <TelemetrySender droneId={id} /> */}
+            <p
+                className={`inline-block px-3 py-1 rounded-full text-sm font-medium
+                    ${drone.status === "ONLINE"
+                        ? "bg-green-100 text-green-700"
+                        : drone.status === "OFFLINE"
+                            ? "bg-red-100 text-red-700"
+                            : "bg-yellow-100 text-yellow-700"
+                    }`}
+            >
+                {drone.status}
+            </p>
 
+            <Button className="bg-blue-600 text-white hover:bg-blue-700" onClick={statusDrone}>
+                Update Status Manually
+            </Button>
 
-            <TelemetrySender droneId={id} />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <TelemetrySender droneId={id} />
+                <SimulatorControl droneId={id} />
+            </div>
 
-            {/* <AlertsList droneId={id} /> */}
-
-
-
-            <SimulatorControl droneId={id} />
-            <TelemetryList droneId={id} />
-            <AlertsList droneId={id} />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <TelemetryList droneId={id} />
+                <AlertsList droneId={id} />
+            </div>
 
 
 

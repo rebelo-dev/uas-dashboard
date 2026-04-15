@@ -18,7 +18,7 @@ export default function TelemetrySender({ droneId }) {
     };
 
     return (
-        <Card>
+        <Card className="shadow-sm border">
             <CardContent className="p-4 space-y-3">
                 <h2 className="text-lg font-semibold">Send Telemetry</h2>
 
