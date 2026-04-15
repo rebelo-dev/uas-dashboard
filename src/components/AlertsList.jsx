@@ -24,15 +24,22 @@ export default function AlertsList({ droneId }) {
                 </h2>
 
                 {alerts.slice(0, 8).map((alert) => (
-                    <div key={alert.id} className="p-2 rounded-md bg-red-50 border">
-                        <p>{alert.type}</p>
+                    <div key={alert.id} className={`p-2 rounded-md bg-red-50 border'
+
+                ${alert.severity === "MEDIUM"
+                            ? "bg-orange-100 text-orange-700"
+                            : alert.severity === "HIGH"
+                                ? "bg-red-100 text-red-700"
+                                : "bg-yellow-100 text-yellow-700"
+                        }    `}>
+
+                        < p > {alert.type}</p>
                         <p className="text-sm">{alert.message}</p>
-                        <p className="text-xs text-red-500">
-                            {alert.severity}
-                        </p>
+                        <p className="text-xs ">{alert.severity}</p>
                     </div>
-                ))}
-            </CardContent>
-        </Card>
+                ))
+                }
+            </CardContent >
+        </Card >
     );
 }
