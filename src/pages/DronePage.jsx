@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { api } from "../services/api";
 import TelemetrySender from "../components/TelemetrySender";
@@ -9,8 +9,10 @@ import { Button } from "../components/ui/button";
 
 
 
+
 export default function DronePage() {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [drone, setDrone] = useState(null);
 
 
@@ -44,6 +46,13 @@ export default function DronePage() {
 
     return (
         <div className="p-6 space-y-6">
+            <Button
+                variant="outline"
+                className="mb-4"
+                onClick={() => navigate("/")}
+            >
+                ← Back to Dashboard
+            </Button>
             <h1 className="text-3xl font-bold">
                 {drone.name}
             </h1>
