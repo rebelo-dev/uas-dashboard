@@ -18,6 +18,14 @@ export default function DronePage() {
     useEffect(() => {
         api.getDrone(id).then(setDrone);
 
+        const fetchDrone = () => {
+            api.getDrone(id).then(setDrone);
+
+        }
+        fetchDrone();
+
+        const interval = setInterval(fetchDrone, 5000);
+        return () => clearInterval(interval);
 
     }, [id]);
 

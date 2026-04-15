@@ -22,13 +22,16 @@ export default function SimulatorControl({ droneId }) {
         <Card className="shadow-sm border">
             <CardContent className="p-4 space-y-3">
                 <h2 className="text-lg font-semibold mb-2">Simulation</h2>
+                <h3>All Dynamic data is triggered to be updated every 5 seconds,
+                    please wait a few seconds after starting the simulation to see changes in telemetry and alerts.
+                </h3>
 
                 <Button
                     onClick={startSimulation}
                     disabled={running}
                     className={`${running
-                            ? "bg-gray-300"
-                            : "bg-green-600 text-white hover:bg-green-700"
+                        ? "bg-gray-300"
+                        : "bg-green-600 text-white hover:bg-green-700"
                         }`}
                 >
                     {running ? "Running..." : "Start Simulation"}
@@ -38,8 +41,8 @@ export default function SimulatorControl({ droneId }) {
                     onClick={stopSimulation}
                     disabled={!running}
                     className={`${!running
-                            ? "bg-gray-300"
-                            : "bg-red-600 text-white hover:bg-red-700"
+                        ? "bg-gray-300"
+                        : "bg-red-600 text-white hover:bg-red-700"
                         }`}
                 >
                     Stop Simulation
