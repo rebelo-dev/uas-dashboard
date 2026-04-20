@@ -1,7 +1,7 @@
 import DroneList from "../components/DroneList";
 import CreateDrone from "../components/DroneCreate";
 import { useEffect, useState } from "react";
-import LoadingScreen from "../components/loadingScreen";
+import LoadingScreen from "../components/LoadingScreen";
 import { api } from "@/services/api";
 
 export default function Dashboard() {
