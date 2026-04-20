@@ -4,12 +4,18 @@ import { Input } from "./ui/input";
 import { Card, CardContent } from "./ui/card";
 import { api } from "../services/api";
 
-export default function CreateDrone() {
+export default function CreateDrone({ onCreated }) {
     const [name, setName] = useState("");
 
     const handleCreate = async () => {
-        await api.createDrone({ name });
-        location.reload();
+        try {
+            const newDrone = await api.createDrone({ name });
+            onCreated(newDrone);
+            setName("");
+        }
+        catch (err) {
+            alert(err.message);
+        }
     };
 
     return (

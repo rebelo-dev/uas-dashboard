@@ -1,16 +1,9 @@
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, CardContent } from "./ui/card";
-import { api } from "../services/api";
+import { api } from "@/services/api";
 
-export default function DroneList() {
-    const [drones, setDrones] = useState([]);
+export default function DroneList({ drones, setDrones }) {
     const navigate = useNavigate();
-
-    useEffect(() => {
-        api.getDrones().then(setDrones);
-    }, []);
-
 
     return (
         <Card className="shadow-sm border">

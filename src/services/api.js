@@ -12,12 +12,23 @@ export const api = {
     getDrones: () => fetch(`${BASE_URL}/drones`).then(r => r.json()),
 
 
-    createDrone: (data) =>
-        fetch(`${BASE_URL}/drones`, {
+
+    createDrone: async (data) => {
+        const response = await fetch(`${BASE_URL}/drones`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),
-        }).then(r => r.json()),
+        });
+
+        const json = await response.json()
+
+        if (!response.ok) {
+            throw new Error(json.message)
+        }
+
+        return json;
+    },
+
 
     getDrone: (id) =>
         fetch(`${BASE_URL}/drones/${id}`).then(r => r.json()),
