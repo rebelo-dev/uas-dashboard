@@ -9,8 +9,13 @@ export default function LoadingScreen() {
             title: "UAS Dashboard",
             subtitle:
                 "The backend is starting up due to a cold-start. This usually takes a minute or two depending on the hosting provider. Please be patient :)",
+
+
+
             intro1:
                 "This application (v1) simulates a drone monitoring and control interface inspired by maritime surveillance operations.",
+
+
             intro2:
                 "It demonstrates how real-time telemetry, alerts, and control systems can be structured in a scalable architecture.",
             featuresTitle: "Core capabilities:",
@@ -21,6 +26,15 @@ export default function LoadingScreen() {
                 "Run flight simulation",
                 "Receive real-time telemetry & alerts"
             ],
+
+            intro3: "The database hosting service changed, causing the application to fail recently. Environment and Backend have been patched to match requirements",
+            featuresTitle: "Patch Notes;",
+            features: [
+                "Node v- LTS migration",
+                "Dependency Management",
+                "CORS protection review",
+                "Rebuild and Deployment"
+            ],
             reposTitle: "Repositories:",
             note: "Both repositories include README files with detailed documentation and future improvements.",
             footer: "Initializing backend services..."
@@ -28,7 +42,7 @@ export default function LoadingScreen() {
         pt: {
             title: "UAS Dashboard",
             subtitle:
-                "O backend está a iniciar devido a um cold-start. Normalmente demora cerca de 1 a 2 minutos. Por favor, seja paciente :)",
+                "O backend está a iniciar devido a um cold-start. Normalmente demora cerca de 1 a 2 minutos. Por favor, seja paciente :) Foram feitas mudanças no servidor que aloja a base de dados, o que impediu o funcionamento normal da aplicação.",
             intro1:
                 "Esta aplicação (v1) simula uma interface de controlo e monitorização de drones inspirada em operações de vigilância marítima.",
             intro2:
