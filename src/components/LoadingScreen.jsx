@@ -28,8 +28,8 @@ export default function LoadingScreen() {
             ],
 
             intro3: "The database hosting service changed, causing the application to fail recently. Environment and Backend have been patched to match requirements",
-            featuresTitle: "Patch Notes;",
-            features: [
+            patchTitle: "Patch Notes;",
+            PatchFeatures: [
                 "Node v- LTS migration",
                 "Dependency Management",
                 "CORS protection review",
