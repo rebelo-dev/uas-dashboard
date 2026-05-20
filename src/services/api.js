@@ -1,11 +1,19 @@
+/*
+
 const BASE_URL = import.meta.env.DEV
     ? (import.meta.env.VITE_BASE_DEV_URL || "http://localhost:3000")
     : (import.meta.env.VITE_API_URL || "https://onrender.com");
-/*
+
+
+
 console.log("Modo:", import.meta.env.DEV ? "Desenvolvimento" : "Produção");
 console.log("API URL ativa:", BASE_URL);
 */
+
+const BASE_URL = "https://uas-mission-control.onrender.com";
+
 export const api = {
+
 
     // DRONES
 
